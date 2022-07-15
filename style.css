@@ -1,0 +1,19 @@
+
+
+form{
+    background-color: #D3D3D3;
+    margin: 1% 10%;
+    padding: 2%;
+}
+
+/* .container{ */
+    /*border-style: solid ; */
+/* } */
+
+
+input[type=submit]:hover {
+    background-color: grey;
+    color: white;
+  }
+
+  

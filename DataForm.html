@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Setting Data</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+ 
+ 
+
+
+    
+        <form name="myForm" onsubmit="return validateForm()"  id="form">
+
+            
+    
+    <div class="container">
+       
+        <div id="heading">
+            <h2> HTML with JS Form </h2>
+            <small> This (set)page is not linked with the list (get)page but through firebase only</small>
+        </div>
+
+        <br><br>
+            
+        
+        <div class="row">
+            
+            <div class="col-sm">
+                <label class="form-check-label" >First name</label> 
+                	<div class="form-group ">
+                        <input class="form-control" type="text" id="Fname" />
+                    </div>
+            </div>
+                
+            <div class="col-sm">
+                <label class="form-check-label"  >Last name</label>
+                
+                <input  class="form-control" type="text" id="Lname" />	
+                	
+            </div>
+            
+        </div>
+            
+        <div class="row">
+            
+            <div class="col-sm">	
+                <label class="form-check-label"  > Male </label>
+                
+                <input class="form-control"  type="radio" id="gender" name="gender"/>
+                
+            </div>
+
+            <div class="col-sm">
+                <label class="form-check-label"    > Female </label>
+                
+                <input class="form-control"  type="radio" id="gender" name="gender"/>
+                
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-sm">	
+                <label class="form-check-label"   >Address</label>
+                
+                <textarea class="form-control" id="address" ></textarea>        
+                	
+            </div>
+            
+            <div class="col-sm">
+                <label class="form-check-label"  > City </label>
+                	
+                <input class="form-control"  type="text" id="city"/>
+                	
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm">	
+                <label class="form-check-label"  >
+                Province
+                </label>
+                
+                    <select class="form-control" id="province" > 
+                    <option> </option>
+                    <option> KPK </option> 
+                    <option> Punjab </option> 
+                    <option> Gilgit Baltistan</option> 
+                    <option> Sindh</option> 
+                    <option> Balochistan </option> 
+                    </select>
+                
+            </div>
+            
+            <div class="col-sm">
+                <label class="form-check-label"   > CNIC </label>
+                    	
+                <input class="form-control"  id="cnic" placeholder="13 digit cnic" />
+                
+            </div>
+        </div>   
+
+        <div class="row">
+
+            <div class="col-sm">
+                <label class="form-check-label"   > Postal Code </label>
+                    
+                <input class="form-control"  id="postal" placeholder="6-Digits" />
+                    	
+            </div>
+            
+            <div class="col-sm">
+                <label class="form-check-label"   > Phone Number </label>
+                
+                <input class="form-control"  id="phone" placeholder="03*********" "  />
+                	
+            </div>
+
+        </div>    
+
+        <div class="row">
+            
+
+            <div class="col-sm">	
+                <label class="form-check-label"   > Email Address </label>
+                
+                <input class="form-control"  id="email" type="text" />
+                
+            </div>
+            
+
+            <div class="col-sm">
+
+                <label class="form-check-label"  > Suggestions</label>
+                
+                <textarea class="form-control" id="suggestions"  ></textarea>
+                
+            </div>	
+
+        </div>    
+<br><br>
+        <div class="row">
+            <div class="col" >
+                <input  class="form-control" type="button"  value="Submit" id="submit" onclick="validateForm()"> 
+            </div>
+        </div>
+
+
+
+    </div>    
+    </form> 
+
+
+
+
+
+
+
+
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    
+
+
+      
+    <!-- Optional JavaScript -->
+ 
+    <script src="form js boot.js"></script>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAlr-Hyuck3Vj3ZzXUdgM3CJsHcGCnRLGg",
+          authDomain: "proj1-5aeb5.firebaseapp.com",
+          projectId: "proj1-5aeb5",
+          storageBucket: "proj1-5aeb5.appspot.com",
+          messagingSenderId: "277263126412",
+          appId: "1:277263126412:web:900b1df5f36218fc2fd0a9"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        import {getDatabase,ref,set,child,update,remove}
+        from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+
+        const db=getDatabase();
+
+        //reference vars
+        var Fname=document.getElementById('Fname');
+        var Lname=document.getElementById('Lname');
+        var gender=document.getElementById('gender');   
+        var address=document.getElementById('address');
+        var city=document.getElementById('city');
+        var province=document.getElementById('province');
+        var cnic=document.getElementById('cnic');
+        var postal=document.getElementById('postal');
+        var phone=document.getElementById('phone');
+        var email=document.getElementById('email');       
+        var suggestions=document.getElementById('suggestions');
+        var submit=document.getElementById('submit');
+        var form=document.getElementById('form');
+
+       
+        submit.addEventListener("click",func)
+        
+        
+        function func( e)
+        {
+            
+            
+                                                                    //      THE SET FUNCTION LETS U STORE UNIQUE VALUES OF ANY TYPE OK?
+                                                                    //      
+                                                                    //      set(x,y)
+                                                                    //      x ===> the whole database
+                                                                    //      y ===> the actual data
+
+                                                                    //      ref
+
+                                                                    //      x=ref(db,'form')
+                                                                    //      db ===> a var which have getDatabase(); assigned
+                                                                    //      'form'===> name of the collection of data
+
+
+
+
+
+
+
+            set(ref(db,'info/ '+Fname.value),{
+                Fname:Fname.value,
+                Lname:Lname.value,
+                gender:gender.value,
+                address:address.value,
+                city:city.value,
+                province:province.value,
+                cnic:cnic.value,
+                postal:postal.value,
+                phone:phone.value,
+                email:email.value,
+                suggestions:suggestions.value
+
+
+            })
+            .then( ()=> {
+                if( Fname.value && Lname.value && gender.value && address.value && city.value && province.value && cnic.value && postal.value && phone.value && email.value && suggestions.value) {
+
+                    alert("datas transferred successfully");
+                    document.getElementById('form').reset();
+
+                }
+                else
+                {
+                    alert("unsuccessful / recheck all the input boxes");
+                }
+            });
+        
+                    
+       
+        }
+        
+      </script>
+</body>
+</html>

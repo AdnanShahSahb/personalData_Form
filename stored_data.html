@@ -1,0 +1,187 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Getting Data</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    th{
+      width: 50rem;
+    }
+    
+
+  </style>
+  </head>
+  <body>
+  <div class="container mt-3 w-100 p-3 ">
+    <table class="table table-striped table-sm table-responsive table-dark">
+      <thead id="heading">
+        <th>S no.</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Cnic</th>
+        <th>Postal Code</th>
+        <th>Phone number</th>
+        <th>Email Address</th>
+        <th>suggestions</th>
+      </thead>
+      <tbody id="tbody1">
+        
+      </tbody>
+    </table>
+
+  </div>
+
+  <script type="module">
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAlr-Hyuck3Vj3ZzXUdgM3CJsHcGCnRLGg",
+      authDomain: "proj1-5aeb5.firebaseapp.com",
+      databaseURL: "https://proj1-5aeb5-default-rtdb.firebaseio.com",
+      projectId: "proj1-5aeb5",
+      storageBucket: "proj1-5aeb5.appspot.com",
+      messagingSenderId: "277263126412",
+      appId: "1:277263126412:web:900b1df5f36218fc2fd0a9"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import {getDatabase, set, ref, get, onValue, child}
+    from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+
+    const db=getDatabase();
+
+// add items to another function---------------------------------------------------
+    function getting(){
+    
+// real time -----------------LESS RECOMMENDED------------------------------------
+    
+    // const dbr=ref(db);
+
+    //     get(child(dbr,'info/'))
+    //     .then ((snapshot) => {
+    //         var thedata=[];
+
+    //         snapshot.forEach(childSnapshot=>{
+    //         thedata.push(childSnapshot.val());
+            
+    //         });
+    //         console.log(thedata);
+            
+    //     getandthrow(thedata);
+
+    //     });
+    
+    // }
+
+// real time -----------------MORE RECOMMENDED------------------------------------
+    const dbr=ref(db,'info/');
+
+    onValue(dbr,(snapshot) => {
+            var thedata=[];
+
+            snapshot.forEach(childSnapshot=>{
+            thedata.push(childSnapshot.val());
+            
+            });
+            console.log(thedata);
+            
+        getandthrow(thedata);
+
+        });
+    
+    }
+
+// take items and add to the table---------------------------------------------------
+    function getandthrow(thatdata){
+
+        thatdata.forEach( element => {
+
+                table(element.Fname,element.Lname,element.address,element.city,element.province,element.cnic,element.postal,element.phone,element.email,element.suggestions);
+        
+            }
+        );
+
+
+
+    }
+
+// the actual table ------------------------------------------------------------------
+
+    var sdn=0;      var tbody=document.getElementById('tbody1');
+
+
+    function table(Fname,Lname,address,city,province,cnic,postal,phone,email,suggestions){
+        let trow=document.createElement('tr');
+        
+        let td1=document.createElement('td');
+        let td2=document.createElement('td');
+        let td3=document.createElement('td');
+        let td4=document.createElement('td');
+        let td5=document.createElement('td');
+        let td6=document.createElement('td');
+        let td7=document.createElement('td');
+        let td8=document.createElement('td');
+        let td9=document.createElement('td');
+        let td10=document.createElement('td');
+        let td11=document.createElement('td');
+
+        td1.innerHTML=++sdn;
+        td2.innerHTML=Fname;
+        td3.innerHTML=Lname;
+        td4.innerHTML=address;
+        td5.innerHTML=city;
+        td6.innerHTML=province;
+        td7.innerHTML=cnic;
+        td8.innerHTML=postal;
+        td9.innerHTML=phone;
+        td10.innerHTML=email;
+        td11.innerHTML=suggestions;
+
+        trow.append(td1);
+        trow.append(td2);
+        trow.append(td3);
+        trow.append(td4);
+        trow.append(td5);
+        trow.append(td6);
+        trow.append(td7);
+        trow.append(td8);
+        trow.append(td9);
+        trow.append(td10);
+        trow.append(td11);
+
+        
+        tbody.append(trow);
+        
+
+    }
+
+    window.onload=getting;
+
+
+
+  </script>
+    <!-- Optional JavaScript -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
